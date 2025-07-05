@@ -1,4 +1,5 @@
 #!/bin/bash
+export FLASK_APP=server
 # get migration message from command line, if not provided, bail out
 if [ -z "$1" ]; then
   echo "Usage: $0 <migration_message>"
