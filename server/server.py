@@ -4,7 +4,6 @@ from flask import Flask, request, jsonify
 from flask_sqlalchemy import SQLAlchemy
 from flask_migrate import Migrate
 from flask_cors import CORS
-import os
 import uuid
 
 #####################################################
@@ -22,6 +21,7 @@ class Entity(db.Model):
     type = db.Column(db.String, nullable=False)
     properties = db.relationship('EntityProperty', backref='entity', cascade="all, delete-orphan")
     _private = db.Column(db.Boolean, default=False, nullable=False)
+    notes = db.Column(db.Text)  # New field for large text notes
 
 class EntityProperty(db.Model):
     __tablename__ = 'entity_properties'
